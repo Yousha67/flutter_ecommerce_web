@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const DrawerHeader(
               child: Center(
                 child: Text(
-                  "Spick-Android",
+                  "ZAZZIYA",
                   textScaleFactor: 1.6,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -76,9 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             //now we create menu and header
             Navigation(),
             //now we create banner

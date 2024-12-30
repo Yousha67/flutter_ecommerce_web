@@ -2,12 +2,16 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_web/constants.dart';
 import 'package:flutter_ecommerce_web/responsive.dart';
-
-class Navigation extends StatelessWidget {
+class Navigation extends StatefulWidget {
   const Navigation({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<Navigation> createState() => _NavigationState();
+}
+
+class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,8 +26,7 @@ class Navigation extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: Row(
                     children: [
                       if (!Responsive.isDesktop(context))
@@ -31,16 +34,14 @@ class Navigation extends StatelessWidget {
                             onPressed: () {
                               Scaffold.of(context).openDrawer();
                             },
-                            icon: Icon(Icons.menu)),
-                      //title
+                            icon: Icon(Icons.menu, color: Colors.black87)),
+                      // Updated brand name for clothing store
                       AutoSizeText(
-                        "Spick-Android",
+                        "ZAZZIYA",  // Changed brand name for clothing
                         maxLines: 1,
                         minFontSize: 16,
                         style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width >= 348
-                              ? 22
-                              : 17,
+                          fontSize: MediaQuery.of(context).size.width >= 348 ? 22 : 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -84,30 +85,47 @@ class Navigation extends StatelessWidget {
   }
 }
 
-class WebMenu extends StatelessWidget {
+class WebMenu extends StatefulWidget {
   const WebMenu({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<WebMenu> createState() => _WebMenuState();
+}
+
+class _WebMenuState extends State<WebMenu> {
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         MenuItems(
           isActive: true,
-          title: 'Home',
+          title: 'Home',  // Home for clothing website
           press: () {},
         ),
         MenuItems(
-          title: 'Products',
+          title: 'Dresses',  // Example clothing category
           press: () {},
         ),
         MenuItems(
-          title: 'Category',
+          title: 'Tops',  // Clothing category
           press: () {},
         ),
         MenuItems(
-          title: 'Contact Us',
+          title: 'Bottoms',  // Clothing category
+          press: () {},
+        ),
+        MenuItems(
+          title: 'Accessories',  // Accessories category
+          press: () {},
+        ),
+        MenuItems(
+          title: 'Sale',  // Sale section
+          press: () {},
+        ),
+        MenuItems(
+          title: 'Contact Us',  // Contact Us
           press: () {},
         ),
       ],
@@ -115,11 +133,16 @@ class WebMenu extends StatelessWidget {
   }
 }
 
-class MobMenu extends StatelessWidget {
+class MobMenu extends StatefulWidget {
   const MobMenu({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<MobMenu> createState() => _MobMenuState();
+}
+
+class _MobMenuState extends State<MobMenu> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -128,11 +151,11 @@ class MobMenu extends StatelessWidget {
           children: [
             MenuItems(
               isActive: true,
-              title: 'Home',
+              title: 'Home',  // Home for clothing website
               press: () {},
             ),
             MenuItems(
-              title: 'Products',
+              title: 'Dresses',  // Clothing category
               press: () {},
             ),
           ],
@@ -140,11 +163,23 @@ class MobMenu extends StatelessWidget {
         Row(
           children: [
             MenuItems(
-              title: 'Category',
+              title: 'Tops',  // Clothing category
               press: () {},
             ),
             MenuItems(
-              title: 'Contact Us',
+              title: 'Accessories',  // Accessories category
+              press: () {},
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            MenuItems(
+              title: 'Sale',  // Sale section
+              press: () {},
+            ),
+            MenuItems(
+              title: 'Contact Us',  // Contact Us
               press: () {},
             ),
           ],
@@ -160,9 +195,9 @@ class MenuItems extends StatefulWidget {
   final bool isActive;
   const MenuItems(
       {Key? key,
-      required this.title,
-      required this.press,
-      this.isActive = false})
+        required this.title,
+        required this.press,
+        this.isActive = false})
       : super(key: key);
 
   @override
@@ -171,6 +206,7 @@ class MenuItems extends StatefulWidget {
 
 class _MenuItemsState extends State<MenuItems> {
   bool isHover = false;
+
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
@@ -191,8 +227,8 @@ class _MenuItemsState extends State<MenuItems> {
                       color: widget.isActive == true
                           ? kPrimaryColor
                           : isHover
-                              ? kPrimaryColor
-                              : Colors.transparent,
+                          ? kPrimaryColor
+                          : Colors.transparent,
                       width: 4))),
           child: Text(
             widget.title,
@@ -200,14 +236,14 @@ class _MenuItemsState extends State<MenuItems> {
               fontWeight: widget.isActive == true
                   ? FontWeight.bold
                   : isHover
-                      ? FontWeight.bold
-                      : FontWeight.normal,
+                  ? FontWeight.bold
+                  : FontWeight.normal,
               fontSize: _size.width >= 370 ? 18 : 14,
               color: widget.isActive == true
                   ? kPrimaryColor
                   : isHover
-                      ? kPrimaryColor
-                      : Colors.black,
+                  ? kPrimaryColor
+                  : Colors.black,
             ),
           ),
         ),
